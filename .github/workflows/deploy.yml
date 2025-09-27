@@ -20,7 +20,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: repo/
+          local-dir: unidad1/
           server-dir: /home/fhuerui697/www/${{ github.event.repository.name }}/
           exclude: |
             **/.git*
