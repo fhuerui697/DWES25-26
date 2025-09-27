@@ -1,0 +1,31 @@
+name: Deploy a AlwaysData (FTP)
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "repo/**"          # solo despliega si cambias algo en ejercicios/
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch: {}           # botón manual (opcional)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ejercicios/
+          server-dir: /home/fhuerui697/www/${{ github.event.repository.name }}/
+          exclude: |
+            **/.git*
+            **/.github/**
+            **/.DS_Store
+            **/node_modules/**
+          # Si quieres que en el hosting se borre lo que borras en GitHub:
+          # dangerous-clean-slate: true
