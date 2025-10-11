@@ -1,7 +1,7 @@
 <?php 
     // Procesamiento del nombre
     if (isset($_POST['nombre']))
-        echo "El nombre es ". $_POST['nombre'];     
+        echo "El nombre es ". htmlspecialchars($_POST['nombre']);     
         else
             echo 'No se ha especificado el nombre';
     echo "<br>";
@@ -84,6 +84,10 @@
             }
         }
     }
+    
+    // Procesar el dato oculto
+    if (isset ($_POST['dato_oculto']))
+        echo "El dato oculto recibido es ". $_POST['dato_oculto'];
 ?>
 
 
