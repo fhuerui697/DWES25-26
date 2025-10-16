@@ -1,0 +1,112 @@
+ /* 
+==================================================
+🎨 VARIABLES PRINCIPALES DE ESTILO PARA FORMULARIOS
+(Se aplican tanto en modo claro, oscuro y automático)
+==================================================
+*/
+[data-theme="light"],
+:root:not([data-theme="dark"]),
+[data-theme="dark"] {
+
+  /* =========================================
+   🅰️ TIPOGRAFÍA
+   ========================================= */
+  --pico-font-family: system-ui, sans-serif;  /* Fuente general */
+  --pico-font-size: 16px;                     /* Tamaño base de texto */
+  --pico-line-height: 1.4;                    /* Altura de línea (legibilidad) */
+  /* --pico-font-weight: 400;                 Peso de fuente si se quiere ajustar */
+
+  /* =========================================
+   🧭 COLORES PRINCIPALES
+   ========================================= */
+  --pico-primary: #2563eb;                    /* Color de enlaces y acentos */
+  --pico-primary-background: #201c93;         /* Fondo de botones primarios (sin clase) */
+  --pico-primary-inverse: #ffffff;            /* Texto sobre botón primario */
+  --pico-primary-hover-background: #6060bd;   /* Fondo de botón al pasar el ratón */
+
+  /* =========================================
+   🧾 FORM ELEMENTS (inputs, select, textarea…)
+   ========================================= */
+  --pico-form-element-background-color: #eef2f7; /* Fondo del control */
+  --pico-form-element-border-color: #b0b8c3;     /* Color de borde normal */
+  --pico-form-element-color: #1e293b;            /* Color de texto dentro del control */
+  --pico-form-element-active-border-color: #2563eb; /* Borde cuando está activo */
+  --pico-form-element-focus-color: #2563eb;         /* Color de foco */
+
+  /* =========================================
+   🧱 ESPACIADO Y DIMENSIONES
+   ========================================= */
+  --pico-spacing: 0.75rem;                        /* Margen/espaciado base */
+  --pico-form-element-spacing-vertical: 0.4rem;   /* Padding vertical de inputs */
+  --pico-form-element-spacing-horizontal: 0.6rem; /* Padding horizontal de inputs */
+
+  /* =========================================
+   🟦 BORDES Y RADIOS
+   ========================================= */
+  --pico-border-radius: 8px;                      /* Radio global (inputs, botones, etc.) */
+  --checkbox-radius: 2px;                         /* 👉 variable personalizada solo para checkbox */
+
+  /* =========================================
+   ✨ EXTRAS (opcional)
+   ========================================= */
+  /* Puedes añadir aquí más variables personalizadas si quieres
+     por ejemplo, para radio buttons, campos destacados, etc. */
+}
+
+/* 
+=========================================
+🎯 APLICACIONES ESPECÍFICAS
+=========================================
+*/
+
+/* Solo para el checkbox */
+input[type="checkbox"] {
+  border-radius: var(--checkbox-radius);
+}
+
+    main.container { max-width: 500px; }
+    form {
+  border: 1px solid #b0b8c3;   /* color del borde */
+  border-radius: 8px;          /* esquinas redondeadas (opcional) */
+  padding: 1.5rem;             /* espacio interno */
+  background: #fff;            /* fondo blanco para destacar */
+}
+h1 {
+  text-align: center;
+  margin-bottom: 1rem; /* separación del formulario */
+  
+}
+label,fieldset legend
+{
+  font-weight: bold;
+  color:chocolate
+  
+}
+
+fieldset label{
+  font-weight: normal;
+  color:initial
+}
+/* Aplica un margen superior uniforme entre cada bloque hijo del formulario */
+form > * + * {
+  margin-top: var(--pico-spacing, 0.75rem);
+}
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+  background-color: #F5EBDD; /* fondo claro siempre */
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;   /* centra horizontalmente */
+  align-items: flex-start;   /* lo pega arriba */
+  padding-top: 2rem;         /* separación superior opcional */
+}
+
+
+
+
+

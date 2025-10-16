@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formulario Web</title>
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+  <link rel="stylesheet" href="codigo1.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Formulario Web</h1>
+
+    <!-- ✅ añadir enctype -->
+    <form method="post" action="procesar.php" enctype="multipart/form-data">
+      <label>Nombre <input type="text" name="nombre" id="nombre"></label>
+      <label>Apellidos <input type="text" name="apellidos"></label>
+
+      <fieldset>
+        <legend>Género</legend>
+        <label><input type="radio" name="genero" value="m"> Masculino</label>
+        <label><input type="radio" name="genero" value="f"> Femenino</label>
+        <label><input type="radio" name="genero" value="O"> Otro</label>
+      </fieldset>
+
+      <label>País
+        <select name="pais">
+          <option value="">— Selecciona —</option>
+          <option value="es">España</option>
+          <option value="mx">México</option>
+          <option value="ar">Argentina</option>
+          <option value="co">Colombia</option>
+        </select>
+      </label>
+
+      <label>Lenguajes
+        <select name="lenguajes[]" multiple>
+          <option value="html">HTML</option>
+          <option value="css">CSS</option>
+          <option value="javascript">JavaScript</option>
+          <option value="php">PHP</option>
+        </select>
+      </label>
+
+      <!-- Habilidades -->
+      <fieldset>
+        <legend>Habilidades adicionales</legend>
+        <label><input type="checkbox" name="habilidades[]" value="ux"> Diseño UX/UI</label>
+        <label><input type="checkbox" name="habilidades[]" value="bbdd"> Bases de datos</label>
+        <label><input type="checkbox" name="habilidades[]" value="git"> Control de versiones</label>
+        <label><input type="checkbox" name="habilidades[]" value="seo"> SEO</label>
+      </fieldset>
+
+      <label>Biografía
+        <textarea name="bio" rows="4"></textarea>
+      </label>
+
+      <!-- ✅ campo de subida -->
+      <label>Subir archivo
+        <input type="file" name="archivo" accept=".pdf,.jpg,.png,.doc,.docx">
+      </label>
+
+      <label><input type="checkbox" name="terminos" value="S"> Acepto los términos</label>
+
+      <!-- ✅ campo oculto -->
+          <input type="hidden" name="dato_oculto" value="valor_oculto">
+
+      <button type="submit">Enviar</button>
+    </form>
+  </main>
+</body>
+</html>
