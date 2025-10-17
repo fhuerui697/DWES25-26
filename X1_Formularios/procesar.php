@@ -9,14 +9,14 @@
     echo "<br>";
 
     // Procesamiento de los apellidos
-    if (isset($_POST['nombre']))
+    if (isset($_POST['apellidos']))
         echo "Los apellidos son ". htmlspecialchars($_POST['apellidos']);     
         else
             echo 'No se han especificado los apellidos';
     echo "<br>";
 
-    // Procesamiento del pais.
-    define('OPCIONES', ['M', 'F', 'O']);
+    // Procesamiento del genero.
+    define('OPCIONES', ['m', 'f', 'o']);
     if (isset($_POST['genero']))
     {
         if (in_array($_POST['genero'],OPCIONES))
@@ -29,16 +29,16 @@
     echo "<br>";
 
     // Procesamiento del pais.
-    define('OPCIONES1', ['es', 'mx', 'ar','co','']);
+    define('OPCIONES1', ['es', 'mx', 'ar','co']);
     if (isset($_POST['pais']))
     {
         if (in_array($_POST['pais'],OPCIONES1))
-            echo "Se ha recibido ". $_POST['pais'];
+            echo "Pais: Se ha recibido ". $_POST['pais'];
                 else
                     echo 'El pais no tiene un valor válido';
     }            
     else
-        echo 'El dato no se ha recibido';
+        echo 'El pais no se ha recibido';
     echo "<br>";
 
     // Procesamiento de lenguajes.
@@ -67,49 +67,65 @@
     }
     else
         echo 'No se han recibido las habilidades o no son del tipo esperado.';
-
     echo "<br>";
+
+    // Procesamiento de la biografía
+    if (isset($_POST['bio']))
+        echo "La biografía es ". htmlspecialchars($_POST['bio']);     
+        else
+            echo 'No se ha especificado la biografía';
+    echo "<br>";
+
     // Procesamiento de ficheros
     // Carpeta de destino
-$destDir = __DIR__ . '/uploads';
-if (!is_dir($destDir)) {
-    mkdir($destDir, 0775, true);
-}
-
-// Límite y tipos permitidos
-const MAX_SIZE = 100000;
-$tiposPermitidos = ['image/png'];
-
-// Comprobar si se ha subido un archivo
-if (isset($_FILES['archivo'])) {
-
-    $nombre = $_FILES['archivo']['name'];
-    $tmp    = $_FILES['archivo']['tmp_name'];
-    $error  = $_FILES['archivo']['error'];
-    $size   = $_FILES['archivo']['size'];
-
-    if ($error !== UPLOAD_ERR_OK) {
-        echo "Fichero: Error con $nombre (código $error).<br>";
-    } elseif ($size > MAX_SIZE) {
-        echo "$nombre: supera el tamaño máximo.<br>";
-    } elseif (!is_uploaded_file($tmp)) {
-        echo "$nombre: subida no válida.<br>";
-    } elseif (!in_array(mime_content_type($tmp), $tiposPermitidos, true)) {
-        echo "$nombre: tipo no permitido.<br>";
-    } else {
-        $destino = $destDir . '/' . basename($nombre);
-        if (move_uploaded_file($tmp, $destino)) {
-            echo "Subido: $nombre<br>";
-        } else {
-            echo "No se pudo mover $nombre.<br>";
+    $destDir = __DIR__ . '/uploads';
+    if (!is_dir($destDir)) 
+        {
+            mkdir($destDir, 0775, true);
         }
-    }
-}
+
+    // Límite y tipos permitidos
+    const MAX_SIZE = 100000;
+    $tiposPermitidos = ['image/png'];
+
+    // Comprobar si se ha subido un archivo
+    if (isset($_FILES['archivo'])) 
+        {
+
+            $nombre = $_FILES['archivo']['name'];
+            $tmp    = $_FILES['archivo']['tmp_name'];
+            $error  = $_FILES['archivo']['error'];
+            $size   = $_FILES['archivo']['size'];
+
+            if ($error !== UPLOAD_ERR_OK) {
+                echo "Fichero: Error con $nombre (código $error).<br>";
+            } elseif ($size > MAX_SIZE) {
+                echo "$nombre: supera el tamaño máximo.<br>";
+            } elseif (!is_uploaded_file($tmp)) {
+                echo "$nombre: subida no válida.<br>";
+            } elseif (!in_array(mime_content_type($tmp), $tiposPermitidos, true)) {
+                echo "$nombre: tipo no permitido.<br>";
+            } else {
+                $destino = $destDir . '/' . basename($nombre);
+                if (move_uploaded_file($tmp, $destino)) {
+                    echo "Subido: $nombre<br>";
+                } else {
+                    echo "No se pudo mover $nombre.<br>";
+                }
+            }
+        }
+        else 
+        {
+            echo "No se ha subido ningún fichero.<br>";
+        }
     
     // Procesar el dato oculto
     if (isset ($_POST['dato_oculto']))
         echo "El dato oculto recibido es ". $_POST['dato_oculto'] ."<BR>";
+    else
+        echo "El dato oculto no se ha recibido.<br>";
 
+    // Procesar los terminos
     if (isset($_POST['terminos']) && $_POST['terminos']=='S')
         echo "Se han aceptado los terminos";
         else
