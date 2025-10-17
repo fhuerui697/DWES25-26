@@ -2,14 +2,14 @@
     // Procesamiento del nombre
     // No se indica htmlspecialchars para permitir y explicar
     // el hackeado.
-    if (isset($_POST['nombre']))
+    if (!empty($_POST['nombre']))
         echo "El nombre es " . $_POST['nombre'];     
         else
             echo 'No se ha especificado el nombre';
     echo "<br>";
 
     // Procesamiento de los apellidos
-    if (isset($_POST['apellidos']))
+    if (!empty($_POST['apellidos']))
         echo "Los apellidos son ". htmlspecialchars($_POST['apellidos']);     
         else
             echo 'No se han especificado los apellidos';
@@ -17,7 +17,7 @@
 
     // Procesamiento del genero.
     define('OPCIONES', ['m', 'f', 'o']);
-    if (isset($_POST['genero']))
+    if (!empty($_POST['genero']))
     {
         if (in_array($_POST['genero'],OPCIONES))
             echo "Tu género es ". $_POST['genero'];
@@ -30,7 +30,7 @@
 
     // Procesamiento del pais.
     define('OPCIONES1', ['es', 'mx', 'ar','co']);
-    if (isset($_POST['pais']))
+    if (!empty($_POST['pais']))
     {
         if (in_array($_POST['pais'],OPCIONES1))
             echo "Pais: Se ha recibido ". $_POST['pais'];
@@ -43,7 +43,7 @@
 
     // Procesamiento de lenguajes.
     $lenguajes_permitidos = ['html', 'css', 'javascript', 'php'];
-    if (isset($_POST['lenguajes']) && is_array($_POST['lenguajes']))
+    if (!empty($_POST['lenguajes']) && is_array($_POST['lenguajes']))
     {
         $no_validos = array_diff($_POST['lenguajes'], $lenguajes_permitidos);
         if (count($no_validos) == 0)
@@ -57,7 +57,7 @@
     
     // Procesamiento de habilidades.
     $habilidades_permitidas = ['ux', 'bbdd', 'git', 'seo'];
-    if (isset($_POST['habilidades']) && is_array($_POST['habilidades']))
+    if (!empty($_POST['habilidades']) && is_array($_POST['habilidades']))
     {
         $no_validos = array_diff($_POST['habilidades'], $habilidades_permitidas);
         if (count($no_validos) == 0)
@@ -70,7 +70,7 @@
     echo "<br>";
 
     // Procesamiento de la biografía
-    if (isset($_POST['bio']))
+    if (!empty($_POST['bio']))
         echo "La biografía es ". htmlspecialchars($_POST['bio']);     
         else
             echo 'No se ha especificado la biografía';
@@ -89,7 +89,7 @@
     $tiposPermitidos = ['image/png'];
 
     // Comprobar si se ha subido un archivo
-    if (isset($_FILES['archivo'])) 
+    if (!empty($_FILES['archivo'])) 
         {
 
             $nombre = $_FILES['archivo']['name'];
@@ -120,13 +120,13 @@
         }
     
     // Procesar el dato oculto
-    if (isset ($_POST['dato_oculto']))
+    if (!empty($_POST['dato_oculto']))
         echo "El dato oculto recibido es ". $_POST['dato_oculto'] ."<BR>";
     else
         echo "El dato oculto no se ha recibido.<br>";
 
     // Procesar los terminos
-    if (isset($_POST['terminos']) && $_POST['terminos']=='S')
+    if (!empty($_POST['terminos']) && $_POST['terminos']=='S')
         echo "Se han aceptado los terminos";
         else
             echo "No se han aceptado los terminos o no ha llegado el dato";
