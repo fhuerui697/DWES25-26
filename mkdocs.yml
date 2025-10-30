@@ -1,8 +1,0 @@
-site_name: Guia OOP PHP
-site_description: Documentación didáctica sobre Programación Orientada a Objetos en PHP
-site_url: https://tuusuario.github.io/guia-oop-php/
-repo_url: https://github.com/tuusuario/guia-oop-php
-theme:
-  name: mkdocs
-nav:
-  - Inicio: index.md
